@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gray">#C2CAD6</color><!--灰色-->
+    <color name="light_gray">#F5F6F8</color><!--浅灰-->
+
+    <color name="blue">#65AAFB</color><!--蓝色-->
+
+
+    <color name="dark_line">#DAD9E3</color><!--分割线-->
+
+
+    <color name="font_dark">#746D8B</color>
+
+    <!--item点击时的颜色-->
+    <color name="item_touch">#D6D6D7</color>
+</resources>

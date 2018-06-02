@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/ly_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/touch_bg"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/font_dark"
+            android:textSize="@dimen/font_mine"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="选择地区"
+            android:textSize="@dimen/font_mine"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv_affirm"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/touch_bg"
+            android:gravity="center"
+            android:text="确定"
+            android:textSize="@dimen/font_mine"
+            tools:ignore="HardcodedText" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dark_line"
+        app:layout_constraintTop_toBottomOf="@id/ly_title" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/city_TabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        app:tabIndicatorColor="@color/blue"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/blue"
+        app:tabTextColor="@android:color/black" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dark_line"
+        app:layout_constraintTop_toBottomOf="@id/city_TabLayout" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/city_RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/line2" />
+</LinearLayout>
