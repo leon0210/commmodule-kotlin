@@ -1,0 +1,44 @@
+
+动画公共属性
+android:duration        动画持续时间，以毫秒为单位
+android:fillAfter       如果设置为true，控件动画结束时，将保持动画最后时的状态
+android:fillBefore      如果设置为true,控件动画结束时，还原到开始动画前的状态
+android:fillEnabled     与android:fillBefore 效果相同，都是在动画结束时，将控件还原到初始化状态
+android:repeatCount     重复次数
+startOffset             动画多次执行的间隔时间，如果只执行一次，执行前会暂停这段时间，
+android:repeatMode	    重复类型，有reverse和restart两个值，
+                        reverse为反向，动画重复的模式，当第偶次执行时，动画方向会相反，
+                        restart为重新执行，方向不变，
+                        必须与repeatCount一起使用才能看到效果。因为这里的意义是重复的类型，即回放时的动作。
+android:interpolator    指定动画插入器
+                        accelerate_decelerate_interpolator       常见的有加速减速插入器
+                        accelerate_interpolator                  加速插入器
+                        decelerate_interpolator                  减速插入器
+
+
+scale(尺寸调节)
+fromXDelta,fromYDelta   起始时X，Y座标,相对于屏幕屏幕
+toXDelta， toYDelta     动画结束时X,Y的座标 --> <!--
+fromXScale,fromYScale   动画开始前X,Y的缩放，0.0为不显示，  1.0为正常大小
+toXScale，toYScale      动画最终缩放的倍数， 1.0为正常大小，大于1.0放大
+pivotX，  pivotY        动画起始位置，相对于屏幕的百分比,两个都为50%表示动画从屏幕中间开始
+
+
+alpha(透明度)
+android:fromAlpha       动画开始的透明度，从0.0 --1.0 ，0.0表示全透明，1.0表示完全不透明
+android:toAlpha         动画结束时的透明度，也是从0.0 --1.0 ，0.0表示全透明，1.0表示完全不透明
+
+
+rotate(旋转)
+android:fromDegrees     开始旋转的角度位置，正值代表顺时针方向度数，负值代码逆时针方向度数
+android:toDegrees       结束时旋转到的角度位置，正值代表顺时针方向度数，负值代码逆时针方向度数
+android:pivotX          缩放起点X轴坐标，可以是数值、百分数、百分数p 三种样式，比如 50、50%、50%p
+android:pivotY          缩放起点Y轴坐标，可以是数值、百分数、百分数p 三种样式，比如 50、50%、50%p
+
+
+translate(平移)
+android:fromXDelta     起始点X轴坐标，可以是数值、百分数、百分数p 三种样式，比如 50、50%、50%p
+android:fromYDelta     起始点Y轴从标，可以是数值、百分数、百分数p 三种样式；
+android:toXDelta       结束点X轴坐标
+android:toYDelta       结束点Y轴坐标
+

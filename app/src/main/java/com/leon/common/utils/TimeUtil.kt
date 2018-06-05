@@ -164,7 +164,7 @@ object TimeUtil {
 //            val min = diff / (60 * 1000) - day * 24 * 60 - hour * 60
             timeString = when (type) {
                 0 -> "${day}天${hour}小时"
-                1 -> {//年
+                1 -> {//年(判断年龄会用到)
                     if (day % 365 >= 180) {
                         "${(day / 365) + 1}"
                     } else "${day / 365}"
@@ -193,7 +193,7 @@ object TimeUtil {
         return weeks[week_index]
     }
 
-    fun getTimeWithIntervalDay(day : Int): Date{
+    fun getTimeWithIntervalDay(day: Int): Date {
         val theCa = Calendar.getInstance()
         theCa.time = Date()
         theCa.add(Calendar.DATE, day)//最后一个数字30可改，30天的意思

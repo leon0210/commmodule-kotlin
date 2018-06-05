@@ -13,6 +13,7 @@ import android.widget.RelativeLayout
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.leon.common.R
+import com.leon.common.R.id.*
 import com.leon.common.widget.citypicker.CityBean
 import kotlinx.android.synthetic.main.layout_city.view.*
 import kotlinx.android.synthetic.main.layout_city_item.view.*
@@ -20,7 +21,9 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-
+/**
+ * 地址选择
+ */
 class CityPicker : RelativeLayout {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)

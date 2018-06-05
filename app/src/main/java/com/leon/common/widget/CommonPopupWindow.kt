@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.support.annotation.LayoutRes
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -79,6 +80,13 @@ class CommonPopupWindow : PopupWindow() {
         attributes.alpha = 1.0f
         activity.window.attributes = attributes
         activity.window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+    }
+
+    /**
+     * 全屏下方弹出
+     */
+    fun showParentButtom(activity: Activity) {
+        showAtLocation(activity.findViewById(android.R.id.content), Gravity.BOTTOM, 0, 0)
     }
 
     class Builder(private val context: Context?) {

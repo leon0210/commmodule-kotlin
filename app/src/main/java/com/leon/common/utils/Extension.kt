@@ -29,26 +29,11 @@ import android.widget.Toast
 /**
  * Created by leonhwang on 2017/8/31.
  */
-/**
- * 使用浏览器打开指定网址
- */
-fun Activity.openBrowser(targetUrl: String) {
-    if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
-        Toast.makeText(this, "$targetUrl 该链接无法使用浏览器打开。", Toast.LENGTH_SHORT).show()
-        return
-    }
-    Intent().run {
-        action = "android.intent.action.VIEW"
-        data = Uri.parse(targetUrl)
-        startActivity(this)
-    }
-}
-
 
 /**
  * @param requestCode 请求码
  */
-inline fun <reified T : Activity> Activity.newIntent(bundle: Bundle? = null, requestCode: Int = -100) {
+inline fun <reified T : Activity> Activity.newActivity(bundle: Bundle? = null, requestCode: Int = -100) {
     val intent = Intent(this, T::class.java)
     if (bundle != null) {
         intent.putExtras(bundle)
@@ -57,7 +42,7 @@ inline fun <reified T : Activity> Activity.newIntent(bundle: Bundle? = null, req
     else startActivity(intent)
 }
 
-inline fun <reified T : Activity> Fragment.newIntent(bundle: Bundle? = null, requestCode: Int = -100) {
+inline fun <reified T : Activity> Fragment.newActivity(bundle: Bundle? = null, requestCode: Int = -100) {
     val intent = Intent(activity, T::class.java)
     if (bundle != null) {
         intent.putExtras(bundle)
@@ -70,7 +55,7 @@ inline fun <reified T : Activity> Fragment.newIntent(bundle: Bundle? = null, req
 /**
  * 动画共享 使用于5.0版本以上
  */
-inline fun <reified T : Activity> Activity.newTransitionIntent(view: View?, bundle: Bundle? = null, requestCode: Int = -100) {
+inline fun <reified T : Activity> Activity.newTransitionActivity(view: View?, bundle: Bundle? = null, requestCode: Int = -100) {
     val intent = Intent(this, T::class.java)
     if (bundle != null) {
         intent.putExtras(bundle)
@@ -85,7 +70,7 @@ inline fun <reified T : Activity> Activity.newTransitionIntent(view: View?, bund
     }
 }
 
-inline fun <reified T : Activity> Fragment.newTransitionIntent(view: View?, bundle: Bundle? = null, requestCode: Int = -100) {
+inline fun <reified T : Activity> Fragment.newTransitionActivity(view: View?, bundle: Bundle? = null, requestCode: Int = -100) {
     val intent = Intent(activity, T::class.java)
     if (bundle != null) {
         intent.putExtras(bundle)
@@ -160,7 +145,6 @@ fun View.setVisible(isVisible: Boolean, inVisible: Boolean = false) {
  */
 fun Context.getQuickLayoutInflater(@LayoutRes resId: Int): View? = LayoutInflater.from(this).inflate(resId, null)
 
-
 /**
  * 获取图片
  */
@@ -171,24 +155,4 @@ fun Context.getQuickDrawable(@DrawableRes resId: Int): Drawable? = ContextCompat
  */
 fun Context.getQuickColor(@ColorRes resId: Int): Int = ContextCompat.getColor(this, resId)
 
-fun EditText.limitMaxCount(max: Int, text: TextView, fromat: String = "已输入%d字,还剩%d字可输入") {
-
-    text.text = String.format(fromat, this.text?.length, max - this.text!!.length)
-    this.filters = arrayOf(InputFilter.LengthFilter(max))
-
-    this.addTextChangedListener(object : TextWatcher {
-
-        override fun afterTextChanged(s: Editable?) {
-
-            text.text = String.format(fromat, s?.length, max - s!!.length)
-        }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        }
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        }
-
-    })
-}
 

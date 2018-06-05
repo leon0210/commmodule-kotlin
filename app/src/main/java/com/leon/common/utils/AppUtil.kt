@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
@@ -13,6 +14,7 @@ import android.net.Uri
 import android.os.Build
 import android.text.TextUtils
 import android.view.WindowManager
+import android.widget.Toast
 
 
 /**
@@ -20,7 +22,6 @@ import android.view.WindowManager
  */
 
 object AppUtil {
-    var isReadPermissions = false
     /**
      * 获取APP版本号
      *
@@ -179,6 +180,29 @@ object AppUtil {
         val info = cm.allNetworkInfo
         info?.indices?.filter { info[it].state == NetworkInfo.State.CONNECTED }?.forEach { return true }
         return false
+    }
+
+    /**
+     * 使用浏览器打开指定网址
+     */
+    fun openBrowser(activity: Activity, targetUrl: String) {
+        if (TextUtils.isEmpty(targetUrl) || targetUrl.startsWith("file://")) {
+            Toast.makeText(activity, "$targetUrl 该链接无法使用浏览器打开。", Toast.LENGTH_SHORT).show()
+            return
+        }
+        Intent().run {
+            action = "android.intent.action.VIEW"
+            data = Uri.parse(targetUrl)
+            activity.startActivity(this)
+        }
+    }
+
+    /**
+     * @param number 目标QQ
+     */
+    fun openQQchat(activity: Activity, number: String) {
+        val url = "mqqwpa://im/chat?chat_type=wpa&uin=$number"//uin是发送过去的qq号码
+        activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 
     /**

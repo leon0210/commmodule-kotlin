@@ -1,5 +1,5 @@
 package com.leon.common
 
 class TestClass {
-    val a=0
+    val a = 0
 }
